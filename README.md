@@ -22,8 +22,6 @@ To get involved with VibeDAO, follow these steps:
 
 3. **Participate**: Join our discussions, vote on proposals, and contribute to projects. Your input helps shape the future of our community.
 
+Starting with a token, but it will be so much more:
 
-```bash
-git clone https://github.com/YourGithubUsername/VibeDAO.git
-cd VibeDAO
-npm install
+CA: 0x8f85EC27BE835Cf3E2b68CAbb4c682a22B399853
