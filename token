@@ -1,14 +1,63 @@
-import { Zksync } from "@thirdweb-dev/chains";
+// tokenOperations.js
+// Import SDK and necessary components
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+import { Zksync } from "@thirdweb-dev/chains";
+require('dotenv').config();
 
-// If used on the FRONTEND pass your 'clientId'
+// Initialize the Thirdweb SDK with your project's settings
 const sdk = new ThirdwebSDK(Zksync, {
-  clientId: "YOUR_CLIENT_ID",
-});
-// --- OR ---
-// If used on the BACKEND pass your 'secretKey'
-const sdk = new ThirdwebSDK(Zksync, {
-  secretKey: "YOUR_SECRET_KEY",
+  secretKey: process.env.SECRET_KEY, // Securely loaded from environment variables
 });
 
-const contract = await sdk.getContract("0x8f85EC27BE835Cf3E2b68CAbb4c682a22B399853");
+// Async function to set an allowance for a spender
+async function setAllowance(contractAddress, spenderAddress, amount) {
+  try {
+    const contract = await sdk.getContract(contractAddress);
+    await contract.erc20.setAllowance(spenderAddress, amount);
+    console.log(`Allowance of ${amount} set for ${spenderAddress}`);
+  } catch (error) {
+    console.error("Error setting allowance:", error);
+    throw error; // Re-throw error for further handling if needed
+  }
+}
+
+// Async function to transfer tokens
+async function transferTokens(contractAddress, toAddress, amount) {
+  try {
+    const contract = await sdk.getContract(contractAddress);
+    await contract.erc20.transfer(toAddress, amount);
+    console.log(`Transferred ${amount} tokens to ${toAddress}`);
+  } catch (error) {
+    console.error("Error transferring tokens:", error);
+    throw error;
+  }
+}
+
+// Async function to transfer tokens from one address to another (with allowance)
+async function transferTokensFrom(contractAddress, fromAddress, toAddress, amount) {
+  try {
+    const contract = await sdk.getContract(contractAddress);
+    await contract.erc20.transferFrom(fromAddress, toAddress, amount);
+    console.log(`Transferred ${amount} tokens from ${fromAddress} to ${toAddress}`);
+  } catch (error) {
+    console.error("Error transferring tokens from address:", error);
+    throw error;
+  }
+}
+
+// Async function to check token allowance
+async function checkAllowance(contractAddress, ownerAddress, spenderAddress) {
+  try {
+    const contract = await sdk.getContract(contractAddress);
+    const allowance = await contract.erc20.allowance(ownerAddress, spenderAddress);
+    console.log(`Allowance from ${ownerAddress} to ${spenderAddress} is ${allowance}`);
+    return allowance;
+  } catch (error) {
+    console.error("Error checking allowance:", error);
+    throw error;
+  }
+}
+
+// Additional functions for balance checks, minting, and burning can be structured similarly
+
+module.exports = { setAllowance, transferTokens, transferTokensFrom, checkAllowance };
