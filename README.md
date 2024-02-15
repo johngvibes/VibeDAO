@@ -22,6 +22,22 @@ To get involved with VibeDAO, follow these steps:
 
 3. **Participate**: Join our discussions, vote on proposals, and contribute to projects. Your input helps shape the future of our community.
 
+## Contributing
+
+We welcome contributions from everyone! If you're interested in helping VibeDAO grow, please take a look at our contributing guidelines. Here are some ways you can contribute:
+
+- **Submit Bug Reports and Feature Requests**: Use the [Issues tab]([(https://github.com/johngvibes/VibeDAO)/issues] to let us know what can be improved.
+- **Develop**: Submit pull requests with bug fixes or new features. Please discuss larger changes via an issue before submitting a pull request.
+
+## Support
+
+If you need help or have questions about VibeDAO, reach out to us!
+
+## License
+
+This project is under the GNU GENERAL PUBLIC LICENSE. For more information, please see the [LICENSE](LICENSE) file in the repository.
+
+
 Starting with a token, but it will be so much more:
 
 CA: 0x8f85EC27BE835Cf3E2b68CAbb4c682a22B399853
