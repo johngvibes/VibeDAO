@@ -1,0 +1,14 @@
+import { Zksync } from "@thirdweb-dev/chains";
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+
+// If used on the FRONTEND pass your 'clientId'
+const sdk = new ThirdwebSDK(Zksync, {
+  clientId: "YOUR_CLIENT_ID",
+});
+// --- OR ---
+// If used on the BACKEND pass your 'secretKey'
+const sdk = new ThirdwebSDK(Zksync, {
+  secretKey: "YOUR_SECRET_KEY",
+});
+
+const contract = await sdk.getContract("0x8f85EC27BE835Cf3E2b68CAbb4c682a22B399853");
