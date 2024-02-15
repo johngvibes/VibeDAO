@@ -7,7 +7,7 @@ dotenv.config();
 const sdk = new ThirdwebSDK(Chains.zkSyncMainnet, {
   privateKey: process.env.PRIVATE_KEY, // Loaded from .env file for security
 });
-
+RPC Server: https://mainnet.era.zksync.io
 // Your ERC-20 contract address on zkSync Mainnet
 const contractAddress = "0x8f85EC27BE835Cf3E2b68CAbb4c682a22B399853";
 
