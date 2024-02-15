@@ -26,7 +26,7 @@ To get involved with VibeDAO, follow these steps:
 
 We welcome contributions from everyone! If you're interested in helping VibeDAO grow, please take a look at our contributing guidelines. Here are some ways you can contribute:
 
-- **Submit Bug Reports and Feature Requests**: Use the [Issues tab][https://github.com/johngvibes/VibeDAO)/issues] to let us know what can be improved.
+- **Submit Bug Reports and Feature Requests**: Use the Issues tab to let us know what can be improved.
 - **Develop**: Submit pull requests with bug fixes or new features. Please discuss larger changes via an issue before submitting a pull request.
 
 ## Support
