@@ -1,14 +1,50 @@
-import { Zksync } from "@thirdweb-dev/chains";
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+import { Chains } from "@thirdweb-dev/sdk";
+import dotenv from 'dotenv';
+dotenv.config();
 
-// If used on the FRONTEND pass your 'clientId'
-const sdk = new ThirdwebSDK(Zksync, {
-  clientId: "YOUR_CLIENT_ID",
-});
-// --- OR ---
-// If used on the BACKEND pass your 'secretKey'
-const sdk = new ThirdwebSDK(Zksync, {
-  secretKey: "YOUR_SECRET_KEY",
+// Initialize the Thirdweb SDK for zkSync Mainnet
+const sdk = new ThirdwebSDK(Chains.zkSyncMainnet, {
+  privateKey: process.env.PRIVATE_KEY, // Loaded from .env file for security
 });
 
-const contract = await sdk.getContract("0x8f85EC27BE835Cf3E2b68CAbb4c682a22B399853");
+// Your ERC-20 contract address on zkSync Mainnet
+const contractAddress = "0x8f85EC27BE835Cf3E2b68CAbb4c682a22B399853";
+
+// Function to transfer tokens
+async function transferTokens(toAddress, amount) {
+  try {
+    const contract = await sdk.getContract(contractAddress);
+    const tx = await contract.erc20.transfer(toAddress, amount);
+    console.log(`Transferred ${amount} tokens to ${toAddress}. Transaction Hash: ${tx.hash}`);
+  } catch (error) {
+    console.error("Error transferring tokens:", error);
+  }
+}
+
+// Function to query the token balance of an address
+async function queryBalance(address) {
+  try {
+    const contract = await sdk.getContract(contractAddress);
+    const balance = await contract.erc20.balanceOf(address);
+    console.log(`Balance of ${address} is ${balance}`);
+    return balance;
+  } catch (error) {
+    console.error("Error querying balance:", error);
+  }
+}
+
+// Example usage for transferring tokens
+const toAddress = "recipient_address_here"; // Replace with the recipient's address
+const amount = 10; // Example token amount to transfer
+
+transferTokens(toAddress, amount)
+  .then(() => console.log("Token transfer successful"))
+  .catch((error) => console.error("Token transfer failed:", error));
+
+// Example usage for querying balance
+const addressToCheck = "address_to_check_here"; // Replace with the address to query
+
+queryBalance(addressToCheck)
+  .then((balance) => console.log(`Queried balance successfully: ${balance}`))
+  .catch((error) => console.error("Query balance failed:", error));
