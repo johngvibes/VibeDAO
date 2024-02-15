@@ -16,7 +16,7 @@ VibeDAO is dedicated to fostering a vibrant community of creators. We believe in
 
 To get involved with VibeDAO, follow these steps:
 
-1. **Connect Your Wallet**: Visit our website and connect your Ethereum wallet. VibeDAO is built on the zkSync network, offering low transaction fees and fast settlement times.
+1. **Connect Your Wallet**: Visit our website and connect your Ethereum wallet. VibeDAO is built on the zkSync network, offering low transaction fees and fast settlement times. We are also expanding to be multichain to serve as many communities as possible. 
 
 2. **Become a Member**: Purchase VibeDAO tokens to become a member. Membership tokens grant voting rights and access to community resources.
 
