@@ -1,13 +1,19 @@
+// npm install @thirdweb-dev/sdk ethers
+
+// Import the SDK and necessary components
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
-import { Chains } from "@thirdweb-dev/sdk";
+import { Chains } from "@thirdweb-dev/sdk"; // Correct import for Chains
+
+// Assuming you're using dotenv for environment variable management
+// This line is necessary if you're running this script in a Node.js environment
 import dotenv from 'dotenv';
 dotenv.config();
 
 // Initialize the Thirdweb SDK for zkSync Mainnet
 const sdk = new ThirdwebSDK(Chains.zkSyncMainnet, {
-  privateKey: process.env.PRIVATE_KEY, // Loaded from .env file for security
+  privateKey: process.env.PRIVATE_KEY, // Load the private key from your .env file
 });
-RPC Server: https://mainnet.era.zksync.io
+
 // Your ERC-20 contract address on zkSync Mainnet
 const contractAddress = "0x8f85EC27BE835Cf3E2b68CAbb4c682a22B399853";
 
@@ -28,23 +34,24 @@ async function queryBalance(address) {
     const contract = await sdk.getContract(contractAddress);
     const balance = await contract.erc20.balanceOf(address);
     console.log(`Balance of ${address} is ${balance}`);
-    return balance;
   } catch (error) {
     console.error("Error querying balance:", error);
   }
 }
 
-// Example usage for transferring tokens
-const toAddress = "recipient_address_here"; // Replace with the recipient's address
-const amount = 10; // Example token amount to transfer
+// Example usage functions should be called with dynamic parameters in a real application
+// For demonstration, these are placeholders and should be replaced with actual logic to handle user inputs or requests
 
-transferTokens(toAddress, amount)
-  .then(() => console.log("Token transfer successful"))
-  .catch((error) => console.error("Token transfer failed:", error));
+// Example placeholder for function calls
+// You would replace these with actual calls in your application logic
+async function runExamples() {
+  const toAddress = "0xRecipientAddressHere"; // Replace with the recipient's address
+  const amount = 10; // Example token amount to transfer
+  await transferTokens(toAddress, amount);
 
-// Example usage for querying balance
-const addressToCheck = "address_to_check_here"; // Replace with the address to query
+  const addressToCheck = "0xAddressToCheckHere"; // Replace with the address to query
+  await queryBalance(addressToCheck);
+}
 
-queryBalance(addressToCheck)
-  .then((balance) => console.log(`Queried balance successfully: ${balance}`))
-  .catch((error) => console.error("Query balance failed:", error));
+// Running example - remove or replace with actual interaction logic
+runExamples().catch(console.error);
